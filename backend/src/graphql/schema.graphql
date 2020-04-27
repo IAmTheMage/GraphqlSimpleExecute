@@ -1,24 +1,47 @@
 type Query {
-    hello: String
+    home: [TweetWithUser]
 }
 
 type Mutation {
-    createUser(name: String!, email: String!, password: String!): UserCreate!
+    createUser(name: String!, email: String!, password: String!): User!
+    Login(email: String!, password: String!): AuthGuard
+    CreateTweet(tweet: String!): Tweet
 }
+
 
 type User {
     id: ID!
     name: String!
     email: String!
-    password: String!
+    created_at: String
+    updated_at: String
 }
 
-type UserCreate {
+type AuthGuard {
+    token: String!
+    error: String!
+    user: AuthUserGuard
+}
+
+type AuthUserGuard {
+    name: String
+    email: String
+}
+
+type Tweet {
+    tweet: String
+    created_at: String
     id: ID!
-    name: String!
-    email: String!
-    createdAt: String!
-    updatedAt: String!
+    user: ID!
+    updated_at: String
+}
+
+
+type TweetWithUser {
+    tweet: String!
+    created_at: String!
+    id: ID!
+    user: User!
 }
 
 
