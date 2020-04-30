@@ -4,6 +4,7 @@ const secretJwt = process.env.SECRET_JWT;
 
 
 async function Login(_, {email, password}) {
+    console.log("Login")
     const user:any = await User.findOne({
         where: {
             email
