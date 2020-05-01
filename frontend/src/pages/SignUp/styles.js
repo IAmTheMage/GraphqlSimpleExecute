@@ -76,7 +76,7 @@ export const SubmitButton = styled.button`
     opacity: ${props => props.enabled ? 1 : 0.45};
 `;
 
-export const LinkToLoginUpPage = styled.span`
+export const LinkToLoginPage = styled.span`
     color: #1da1f2;
     font-size: 13px;
     margin-top: 6px;

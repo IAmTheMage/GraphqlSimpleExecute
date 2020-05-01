@@ -3,14 +3,15 @@ import {useApolloClient, useMutation} from '@apollo/react-hooks';
 import { gql } from "apollo-boost";
 import { Container, Form, FormLogo, FormTitle, 
   InputContainer, InputDescription, Input,
-  SubmitContainer, SubmitButton
+  SubmitContainer, SubmitButton, LinkToSignUpPage
 } from './styles';
 import logo from '../../assets/Twitter_Logo_Blue.png';
+import rest from '../../services/axios';
 
 
 const LOGIN_MUTATION = gql`
   mutation Login($email: String!, $password: String!) {
-    login(email: $email, password: $password) {
+    Login(email: $email, password: $password) {
       token
       error
       user {
@@ -21,7 +22,7 @@ const LOGIN_MUTATION = gql`
   }
 `;
 
-export default function Login() {
+export default function Login({history}) {
   const [enabled, setEnabled] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -30,6 +31,25 @@ export default function Login() {
   useEffect(() => {
     transformSubmitButtonOpacity();
   }, [email, password])
+
+  useEffect(() => {
+    checkLogin()
+  }, [])
+
+  async function checkLogin() {
+    const token = localStorage.getItem('token');
+    if(token) {
+        const response = await rest.post('/checkLogin', {}, {
+            headers: {
+                authorization: token
+            }
+        });
+        if(response.data.token.id) {
+            history.push('/feed');
+        }
+    }
+
+  } 
 
   const transformSubmitButtonOpacity = () => {
     if(
@@ -52,9 +72,18 @@ export default function Login() {
     }
 
     return (
-      <Form onSubmit={(e) => {
+      <Form onSubmit={async (e) => {
         e.preventDefault();
-        login({variables: {email: "gustavosjn2013@gmail.com", password: "123456"}})
+        const response = await login({variables: {email: email, password: password}})
+        const {token} = response.data.Login;
+        if(token) {
+          localStorage.setItem('token', token);
+          history.push('/feed')
+        }
+        else {
+          alert("Error, usuario nao encontrado")
+        }
+        
       }}>
             <FormLogo src={logo}></FormLogo>
             <FormTitle>Entrar no Twitter</FormTitle>
@@ -64,11 +93,15 @@ export default function Login() {
             </InputContainer>
             <InputContainer style={{marginTop: 25}}>
               <InputDescription>Senha</InputDescription>
-              <Input onChange={(e) => setPassword(e.target.value)}></Input>
+              <Input type="password" onChange={(e) => setPassword(e.target.value)}></Input>
             </InputContainer>
             <SubmitContainer>
               <SubmitButton enabled={enabled}>Entrar</SubmitButton>
             </SubmitContainer>
+
+            <LinkToSignUpPage onClick={() => {
+                history.push('/signUp')
+            }}>Nao possuo conta</LinkToSignUpPage>
         </Form>
     )
   }

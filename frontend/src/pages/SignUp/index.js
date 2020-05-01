@@ -3,7 +3,7 @@ import {useApolloClient, ApolloConsumer, useMutation} from '@apollo/react-hooks'
 import { gql } from "apollo-boost";
 import { Container, Form, FormLogo, FormTitle, 
   InputContainer, InputDescription, Input,
-  SubmitContainer, SubmitButton, LinkToLoginUpPage
+  SubmitContainer, SubmitButton, LinkToLoginPage
 } from './styles';
 import logo from '../../assets/Twitter_Logo_Blue.png';
 import rest from '../../services/axios';
@@ -47,7 +47,7 @@ export default function SignUp({history}) {
                     authorization: token
                 }
             });
-            if(response.data.tokenIsValid.id) {
+            if(response.data.token.id) {
                 history.push('/feed');
             }
         }
@@ -60,13 +60,14 @@ export default function SignUp({history}) {
         return (
             <Form onSubmit={async (e) => {
                 e.preventDefault();
-                await createAccount({
+                const response = await createAccount({
                     variables: {
                         name,
                         email,
                         password
                     }
                 })
+                history.push('/')
             }}>
                 <FormLogo src={logo}></FormLogo>
                 <FormTitle>Entrar no Twitter</FormTitle>
@@ -85,9 +86,9 @@ export default function SignUp({history}) {
                 <SubmitContainer>
                 <SubmitButton disabled={!enabled} enabled={enabled}>Entrar</SubmitButton>
                 </SubmitContainer>
-                <LinkToLoginUpPage onClick={() => {
+                <LinkToLoginPage onClick={() => {
                 history.push('/')
-                }}>Ja possuo conta</LinkToLoginUpPage>
+                }}>Ja possuo conta</LinkToLoginPage>
             </Form>
         )
     }

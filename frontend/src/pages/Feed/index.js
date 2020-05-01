@@ -1,5 +1,7 @@
 import React, {useEffect} from 'react';
 import rest from '../../services/axios';
+import {Container} from './styles';
+import LeftColumn from '../components/LeftColumnFeedPage/index';
 
 
 export default function Feed({history}) {
@@ -23,8 +25,8 @@ export default function Feed({history}) {
     }
 
     return (
-        <div>
-            <h1>Feed</h1>
-        </div>
+        <Container>
+            <LeftColumn></LeftColumn>
+        </Container>
     )
 }

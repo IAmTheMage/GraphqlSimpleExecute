@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import './db';
 import { GraphQLServer } from 'graphql-yoga';
+import jwt from 'jsonwebtoken';
 import {resolve} from 'path';
 import resolvers from './graphql/resolvers';
 
@@ -18,6 +19,19 @@ const server = new GraphQLServer({
         }
     },
     middlewares: []
+})
+
+server.post('/checkLogin', (req,res) => {
+    try {
+        const {authorization} = req.headers;
+        const token = jwt.verify(authorization, process.env.SECRET_JWT);
+        return res.json({token})
+    }
+    catch {
+        return res.status(400).json({
+            error: "Token not valid"
+        })
+    }
 })
 
 server.start(({port}) => 
