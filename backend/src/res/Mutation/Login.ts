@@ -24,7 +24,9 @@ async function Login(_, {email, password}) {
     const compare = await user.comparePassword(password);
     
     if(compare) {
-        const token = jwt.sign({id: user.id}, secretJwt);
+        const token = jwt.sign({id: user.id}, secretJwt, {
+            expiresIn: 3600
+        });
         return {
             token: token,
             error: "",
