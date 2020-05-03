@@ -40,7 +40,7 @@ export const TopicsContainer = styled.div`
     display: flex;
     flex-direction: column;
     background: #f5f8fa;
-    border-radius: 20px;
+    border-radius: 10px;
     margin-top: 15px;
     margin-left: 20px;
 `;
@@ -62,12 +62,14 @@ export const TopicsTitle = styled.h1`
 
 export const TopicContent = styled.div`
     border-top: .5px solid #ccc;
-    width: 90%;
+    width: 100%;
     height: 75px;
     display: flex;
     flex-direction: column;
-    margin-left: 5%;
-    margin-right: 5%;
+
+    svg {
+        margin-right: 8%;
+    }
 `;
 
 export const StaticContainer = styled.div`
@@ -76,6 +78,8 @@ export const StaticContainer = styled.div`
     justify-content: space-between;
     align-items: center;
     margin-top: 10px;
+    margin-left: 5%;
+    
 `;
 
 export const MomentTopicStaticDescription = styled.span`
@@ -85,9 +89,10 @@ export const MomentTopicStaticDescription = styled.span`
 
 export const Topic = styled.h3`
     color: black;
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 0;
     margin-bottom: 0;
+    margin-left: 5%;
 `;
 
 export const TopicTweetCount = styled.h6`
@@ -95,4 +100,20 @@ export const TopicTweetCount = styled.h6`
     margin-top: 0;
     font-size: 12px;
     font-weight: normal;
+    margin-left: 5%;
+`;
+
+export const MoreContainer = styled.div`
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    height: 40px;
+    align-items: center;
+    border-top: .5px solid #ccc;
+`;
+
+export const More = styled.span`
+    margin-left: 5%;
+    font-size: 14px;
+    color: #1da1f2;
 `;

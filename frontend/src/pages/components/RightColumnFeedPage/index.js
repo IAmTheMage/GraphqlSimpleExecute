@@ -6,7 +6,8 @@ import { Container, ContentContainer,
     InputContainer, SearchInput,
     TopicsContainer, TopicsDescriptionContainer,
     TopicsTitle, TopicContent, StaticContainer, 
-    MomentTopicStaticDescription, Topic, TopicTweetCount
+    MomentTopicStaticDescription, Topic, TopicTweetCount,
+    MoreContainer, More
 } from './styles';
 
 
@@ -21,7 +22,7 @@ export default function RightColumnFeedPage() {
             <TopicsContainer>
                 <TopicsDescriptionContainer>
                     <TopicsTitle>Assuntos para você</TopicsTitle>
-                    <BsGear style={{marginRight: 10}} color="#1da1f2" size={14}/>
+                    <BsGear style={{marginRight: '5%'}} color="#1da1f2" size={14}/>
                 </TopicsDescriptionContainer>
                 <TopicContent>
                     <StaticContainer>
@@ -31,6 +32,41 @@ export default function RightColumnFeedPage() {
                     <Topic>Amoedo</Topic>
                     <TopicTweetCount>40.5 mil Tweets</TopicTweetCount>
                 </TopicContent>
+                <TopicContent>
+                    <StaticContainer>
+                        <MomentTopicStaticDescription>Assunto do momento em Brasil</MomentTopicStaticDescription>
+                        <IoIosArrowDown size={15} color="#bbb"></IoIosArrowDown>
+                    </StaticContainer>
+                    <Topic>Havan</Topic>
+                    <TopicTweetCount>40.5 mi Tweets</TopicTweetCount>
+                </TopicContent>
+                <TopicContent>
+                    <StaticContainer>
+                        <MomentTopicStaticDescription>Assunto do momento em Brasil</MomentTopicStaticDescription>
+                        <IoIosArrowDown size={15} color="#bbb"></IoIosArrowDown>
+                    </StaticContainer>
+                    <Topic>Minecraft</Topic>
+                    <TopicTweetCount>52 mil Tweets</TopicTweetCount>
+                </TopicContent>
+                <TopicContent>
+                    <StaticContainer>
+                        <MomentTopicStaticDescription>Assunto do momento em Brasil</MomentTopicStaticDescription>
+                        <IoIosArrowDown size={15} color="#bbb"></IoIosArrowDown>
+                    </StaticContainer>
+                    <Topic>OVNI</Topic>
+                    <TopicTweetCount>48 mil Tweets</TopicTweetCount>
+                </TopicContent>
+                <TopicContent>
+                    <StaticContainer>
+                        <MomentTopicStaticDescription>Assunto do momento em Brasil</MomentTopicStaticDescription>
+                        <IoIosArrowDown size={15} color="#bbb"></IoIosArrowDown>
+                    </StaticContainer>
+                    <Topic>Instagram</Topic>
+                    <TopicTweetCount>62 mi Tweets</TopicTweetCount>
+                </TopicContent>
+                <MoreContainer>
+                    <More>Mostrar mais</More>
+                </MoreContainer>
             </TopicsContainer>
         </ContentContainer>
     </Container>

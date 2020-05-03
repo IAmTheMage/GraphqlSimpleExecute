@@ -1,4 +1,4 @@
-import React, {Fragment, useEffect} from 'react';
+import React, {useEffect} from 'react';
 import {IoIosArrowDown} from 'react-icons/io';
 import { FiMessageCircle, FiShare } from 'react-icons/fi';
 import { AiOutlineRetweet, AiOutlineHeart } from 'react-icons/ai';

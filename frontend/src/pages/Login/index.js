@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useApolloClient, useMutation} from '@apollo/react-hooks';
+import {useMutation} from '@apollo/react-hooks';
 import { gql } from "apollo-boost";
 import { Container, Form, FormLogo, FormTitle, 
   InputContainer, InputDescription, Input,
@@ -26,7 +26,6 @@ export default function Login({history}) {
   const [enabled, setEnabled] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const client = useApolloClient();
 
   useEffect(() => {
     transformSubmitButtonOpacity();
@@ -65,7 +64,7 @@ export default function Login({history}) {
   }
 
   const Login = () => {
-    const [login, {data, error}] = useMutation(LOGIN_MUTATION)
+    const [login, {error}] = useMutation(LOGIN_MUTATION)
 
     if(error) {
       console.log(error)

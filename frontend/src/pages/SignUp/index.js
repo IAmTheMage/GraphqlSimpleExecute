@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {useApolloClient, ApolloConsumer, useMutation} from '@apollo/react-hooks';
-import { gql } from "apollo-boost";
+import {useMutation} from '@apollo/react-hooks';
 import { Container, Form, FormLogo, FormTitle, 
   InputContainer, InputDescription, Input,
   SubmitContainer, SubmitButton, LinkToLoginPage
@@ -55,12 +54,12 @@ export default function SignUp({history}) {
     }
 
     const Submit = () => {
-        const [createAccount, {data, error}] = useMutation(CREATEACCOUNTMUTATION)
+        const [createAccount] = useMutation(CREATEACCOUNTMUTATION)
 
         return (
             <Form onSubmit={async (e) => {
                 e.preventDefault();
-                const response = await createAccount({
+                await createAccount({
                     variables: {
                         name,
                         email,

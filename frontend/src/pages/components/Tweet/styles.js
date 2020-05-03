@@ -60,7 +60,7 @@ export const TweetText = styled.span`
 
 export const IconsContainer = styled.div`
     display: flex;
-    width: 90%;
+    width: 80%;
     justify-content: space-between;
     margin-top: 12px;
 `;

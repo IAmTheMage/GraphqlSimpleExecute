@@ -29,9 +29,9 @@ server.post('/checkLogin', (req,res) => {
         return res.json({token})
     }
     catch {
-				return res.status(419).json({
-					error: "Unauthorized"
-				})
+        return res.status(419).json({
+            error: "Unauthorized"
+        })
     }
 })
 
