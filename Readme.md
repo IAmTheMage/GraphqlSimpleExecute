@@ -12,15 +12,15 @@
 
 ## Libraries for ReactJS that I used
 
-## styled-components: https://styled-components.com/
-## Apollo-Client: https://www.apollographql.com/docs/react/
+### styled-components: https://styled-components.com/
+### Apollo-Client: https://www.apollographql.com/docs/react/
 
 ### Postgresql with database
 
 ## Features that I will try to implement
 
-## Image upload
-## Tweets with images
-## Followers
-## Subscriptions
+### Image upload[]
+### Tweets with images[]
+### Followers[]
+### Subscriptions[]
 
