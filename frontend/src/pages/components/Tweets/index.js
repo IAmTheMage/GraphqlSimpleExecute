@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {Fragment} from 'react';
 import {useQuery} from '@apollo/react-hooks';
 import { Container } from './styles';
 import {FETCHTWEETS} from './query';
+import Tweet from '../Tweet';
 
 
 export default function Tweets() {
@@ -11,12 +12,18 @@ export default function Tweets() {
 
 			if(loading) return <h1>Loading</h1>
 			if(error) {
-				console.log(error)
 				return <h1>Error</h1>
 			}
-			console.log(data);
 
-			return <span></span>
+			return (
+				<Fragment>
+					{
+						data.home.map(tweet => {
+							return <Tweet key={tweet.id} data={tweet} />
+						})
+					}
+				</Fragment>
+			)
 		}
 
     return (

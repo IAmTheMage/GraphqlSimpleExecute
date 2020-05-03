@@ -8,7 +8,8 @@ import resolvers from './graphql/resolvers';
 
 const server = new GraphQLServer({
     typeDefs: resolve(__dirname, 'graphql', 'schema.graphql'),
-    resolvers,
+		resolvers,
+		middlewares: [],
     context: req => {
         return {
             token: req.request.headers.authorization ? req.request.headers.authorization : null,
@@ -18,7 +19,7 @@ const server = new GraphQLServer({
             } : null
         }
     },
-    middlewares: []
+    
 })
 
 server.post('/checkLogin', (req,res) => {
@@ -28,9 +29,9 @@ server.post('/checkLogin', (req,res) => {
         return res.json({token})
     }
     catch {
-        return res.status(400).json({
-            error: "Token not valid"
-        })
+				return res.status(419).json({
+					error: "Unauthorized"
+				})
     }
 })
 

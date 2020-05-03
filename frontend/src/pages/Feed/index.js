@@ -3,6 +3,7 @@ import rest from '../../services/axios';
 import {Container} from './styles';
 import LeftColumn from '../components/LeftColumnFeedPage';
 import MidColumnFeedPage from '../components/MidColumnFeedPage';
+import RightColumn from '../components/RightColumnFeedPage';
 
 
 export default function Feed({history}) {
@@ -29,8 +30,9 @@ export default function Feed({history}) {
 
     return (
         <Container>
-            <LeftColumn></LeftColumn>
+            <LeftColumn />
             <MidColumnFeedPage data={{pageName: "Pagina inicial"}}></MidColumnFeedPage>
+            <RightColumn />
         </Container>
     )
 }
